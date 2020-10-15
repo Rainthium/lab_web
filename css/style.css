@@ -1,0 +1,28 @@
+.block-container .block-about:first-child {
+    padding-bottom: 250px;
+}
+
+.block-container .block-about:not(:first-child) {
+    margin-top: -150px;
+    padding-top: 100px;
+    padding-bottom: 200px;
+    border-top-left-radius: 5rem;
+    border-top-right-radius: 5rem;
+}
+
+.block-container .block-about:last-child {
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
+
+.block-bubble {
+    font-size: x-large;
+    min-height: 8rem;
+    background-color: #e8e9eb;
+    padding: 1rem;
+    border-radius: 1rem 1rem 1rem 0;
+}
+
+.step {
+    height: 400px;
+}
