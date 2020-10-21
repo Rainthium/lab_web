@@ -121,7 +121,7 @@ if (!$_SESSION['user']) {
                     <h5 class="card-title">Ого как красиво!</h5>
                     <p class="card-text flex-grow-1">Кто-то приехал и увидел как тут красиво. Позвал свою семью и
                         отдохнули с шашлыками по-человечески.</p>
-                    <a href="#" class="btn btn-dark">Перейти к статье</a>
+                    <a href="/article1.php" class="btn btn-dark">Перейти к статье</a>
                 </div>
             </div>
 
@@ -132,7 +132,7 @@ if (!$_SESSION['user']) {
                     <h5 class="card-title">Новое аниме</h5>
                     <p class="card-text flex-grow-1">Японские мультики становятся все более популярными. Не знаем что
                         это за аниме, но оно бьет все рекорды!</p>
-                    <a href="#" class="btn btn-dark">Перейти к статье</a>
+                    <a href="/article2.php" class="btn btn-dark">Перейти к статье</a>
                 </div>
             </div>
 
