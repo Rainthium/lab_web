@@ -58,7 +58,7 @@ $articleContent = '
           integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
 
 
-    <title>Первая лаба :)</title>
+    <title>Статья :)</title>
 </head>
 
 <body style="background-image: url('images/white-cubes.png');">
@@ -97,9 +97,9 @@ $articleContent = '
             <div class="input-group flex-nowrap">
                 <input class="form-control" type="search" placeholder="Статья, автор, тема, журнал..."
                        style="min-width: 270px">
-                <div class="input-group-append">
+<!--                <div class="input-group-append">-->
                     <button class="btn btn-outline-success active" type="submit">Поиск</button>
-                </div>
+<!--                </div>-->
             </div>
         </form>
 
@@ -142,7 +142,7 @@ $articleContent = '
                     <div class="mt-5"></div>
                     <div class="mb-5"></div>
                     <?php echo $content; ?>
-                    </form>
+                    <div class="mb-5"></div>
                 </div>
                 <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
             </div>
