@@ -9,7 +9,7 @@ if (!$_SESSION['user']) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Авторизация и регистрация</title>
+    <title>Профиль</title>
     <!--    <link rel="stylesheet" href="assets/css/main.css">-->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"

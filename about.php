@@ -16,7 +16,7 @@ if (!$_SESSION['user']) {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 
-    <title>Первая лаба :)</title>
+    <title>О сервисе</title>
 </head>
 
 <body>

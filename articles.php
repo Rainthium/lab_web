@@ -17,7 +17,7 @@ if (!$_SESSION['user']) {
           integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
 
 
-    <title>Первая лаба :)</title>
+    <title>Статьи</title>
 </head>
 
 <body style="background-image: url('images/white-cubes.png');">

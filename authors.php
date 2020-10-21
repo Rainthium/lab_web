@@ -18,7 +18,7 @@ if (!$_SESSION['user']) {
 
 
 
-    <title>Первая лаба :)</title>
+    <title>Авторы</title>
 </head>
 
 <body style="background-image: url('images/white-cubes.png');">
