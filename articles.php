@@ -143,7 +143,7 @@ if (!$_SESSION['user']) {
                     <h5 class="card-title">Жертва матанализа</h5>
                     <p class="card-text flex-grow-1">Так выглядит человек, решавший задания из Демидовича непрерывно на
                         протяжении трех дней!</p>
-                    <a href="#" class="btn btn-dark">Перейти к статье</a>
+                    <a href="/article3.php" class="btn btn-dark">Перейти к статье</a>
                 </div>
             </div>
 
