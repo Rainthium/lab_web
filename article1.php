@@ -58,84 +58,80 @@ $articleContent = '
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
-          integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
 
 
-    <title>Первая лаба :)</title>
+    <title>Статья :)</title>
 </head>
 
 <body style="background-image: url('images/white-cubes.png');">
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.5.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-<!--    Тут шапка сайта-->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark" style="padding-left: 16px; padding-right: 16px">
-    <a class="navbar-brand" href="articles.php">
-        <img src="images/ikonka-gazeta.png" width="38" height="38" class="d-inline-block align-top" alt=""
-             loading="lazy">
-        Статьи.ру
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <!--    Тут шапка сайта-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="padding-left: 16px; padding-right: 16px">
+        <a class="navbar-brand" href="articles.php">
+            <img src="images/ikonka-gazeta.png" width="38" height="38" class="d-inline-block align-top" alt="" loading="lazy">
+            Статьи.ру
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
-        <!-- ul - Неупорядоченный список, li - его элемент. -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link active" href="articles.php">Статьи</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="authors.php">Авторы</a>
-            </li>
-            <li class="nav-item mr-4">
-                <a class="nav-link active" href="#">Журналы</a>
-            </li>
-        </ul>
-        <form class="form-inline mr-auto">
-            <div class="input-group flex-nowrap">
-                <input class="form-control" type="search" placeholder="Статья, автор, тема, журнал..."
-                       style="min-width: 270px">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-success active" type="submit">Поиск</button>
+            <!-- ul - Неупорядоченный список, li - его элемент. -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="articles.php">Статьи</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="authors.php">Авторы</a>
+                </li>
+                <li class="nav-item mr-4">
+                    <a class="nav-link active" href="#">Журналы</a>
+                </li>
+            </ul>
+            <form class="form-inline mr-auto">
+                <div class="input-group flex-nowrap">
+                    <input class="form-control" type="search" placeholder="Статья, автор, тема, журнал..." style="min-width: 270px">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-success active" type="submit">Поиск</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="m-2"></div>
+            <div class="btn-group">
+                <a href="profile.php" class="btn btn-light active" role="button" aria-pressed="true">Профиль</a>
+                <div class="bth-group-append">
+                    <img src="<?= $_SESSION['user']['avatar'] ?>" width="38" height="38" class="d-inline-block" alt="" loading="lazy">
                 </div>
             </div>
-        </form>
-
-        <div class="m-2"></div>
-        <div class="btn-group">
-            <a href="profile.php" class="btn btn-light active" role="button" aria-pressed="true">Профиль</a>
-            <div class="bth-group-append">
-                <img src="<?= $_SESSION['user']['avatar'] ?>" width="38" height="38" class="d-inline-block" alt="" loading="lazy">
-            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!--      Основная часть сайта-->
-<div class="row flex-nowrap mr-0">
+    <!--      Основная часть сайта-->
+    <div class="row flex-nowrap mr-0">
 
-    <!--    Правая колонка сайта-->
-    <div class="col">
+        <!--    Правая колонка сайта-->
+        <div class="col">
 
 
-        <div class="container bg-light">
-            <div class="row">
-                <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
-                <div class="col-lg-6 col-md-10 col-sm-12">
+            <div class="container bg-light">
+                <div class="row">
+                    <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
+                    <div class="col-lg-6 col-md-10 col-sm-12">
 
-                    <div class="mb-5"></div>
+                        <div class="mb-5"></div>
 
-                    <h1 class="chapter">5 признаков непорядочной девушки с низкой моралью</h1>
+                        <h1 class="chapter">5 признаков непорядочной девушки с низкой моралью</h1>
 
-                    <div class="mb-5"></div>
-                    <h2>Содержание:</h2>
-                    <?php
+                        <div class="mb-5"></div>
+                        <h2>Содержание:</h2>
+                        <?php
                     // Вставляем содержание статьи из БД
                     $content = addHeaders($articleContent);
                     // Генерируем содержание статьи с помощью содержания статьи из БД
@@ -143,16 +139,17 @@ $articleContent = '
 
                     echo $titleContent;
                     ?>
-                    <div class="mt-5"></div>
-                    <div class="mb-5"></div>
-                    <?php echo $content; ?>
-                    </form>
+                        <div class="mt-5"></div>
+                        <div class="mb-5"></div>
+                        <?php echo $content; ?>
+                        <div class="mb-5"></div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
                 </div>
-                <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
             </div>
         </div>
     </div>
-</div>
 
 </body>
 

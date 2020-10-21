@@ -57,9 +57,9 @@ if (!$_SESSION['user']) {
             <div class="input-group flex-nowrap">
                 <input class="form-control" type="search" placeholder="Статья, автор, тема, журнал..."
                        style="min-width: 270px">
-                <div class="input-group-append">
+<!--                <div class="input-group-append">-->
                     <button class="btn btn-outline-success active" type="submit">Поиск</button>
-                </div>
+<!--                </div>-->
             </div>
         </form>
 
@@ -116,7 +116,7 @@ if (!$_SESSION['user']) {
         <div class="container">
             <h3 class="mt-3 ml-3 mb-3"><strong>Популярные авторы на основе ваших интересов</strong></h3>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6">
 
                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
                          style="max-height: 250px;">
@@ -173,7 +173,7 @@ if (!$_SESSION['user']) {
 
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
 
                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
                          style="max-height: 250px;">

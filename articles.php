@@ -56,9 +56,9 @@ if (!$_SESSION['user']) {
             <div class="input-group flex-nowrap">
                 <input class="form-control" type="search" placeholder="Статья, автор, тема, журнал..."
                        style="min-width: 270px">
-                <div class="input-group-append">
+<!--                <div class="input-group-append">-->
                     <button class="btn btn-outline-success active" type="submit">Поиск</button>
-                </div>
+<!--                </div>-->
             </div>
         </form>
 
