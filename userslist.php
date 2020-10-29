@@ -3,6 +3,7 @@ session_start();
 if (!$_SESSION['user']) {
     header('Location: /');
 }
+require_once 'vendor/connect.php';
 ?>
 
 <!doctype html>
@@ -60,8 +61,7 @@ if (!$_SESSION['user']) {
 
         <div class="m-2"></div>
         <div class="btn-group">
-            <a href="/vendor/logout.php" class="logout btn btn-light active" role="button"
-               aria-pressed="true">Выход</a>
+            <a href="profile.php" class="btn btn-light active" role="button" aria-pressed="true">Профиль</a>
             <div class="bth-group-append">
                 <img src="<?= $_SESSION['user']['avatar'] ?>" width="38" height="38" class="d-inline-block" alt=""
                      loading="lazy">
@@ -71,42 +71,32 @@ if (!$_SESSION['user']) {
 </nav>
 
 <div class="container">
+    <div class="mt-5"></div>
     <div class="row">
         <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
         <div class="col-lg-6 col-md-10 col-sm-12">
-
-            <form action="vendor/editdata.php" method="post" enctype="multipart/form-data">
-                <h3 class="mt-3 mb-4"><strong>Личный кабинет</strong></h3>
-                <h5 class="form-label mb-2">Имя пользователя:</h5>
-                <input type="text" class="form-control mb-3" name="imya" placeholder="Введите имя пользователя"
-                       value="<?= $_SESSION['user']['full_name'] ?>">
-                <h5 class="form-label mb-2">Аватар пользователя:</h5>
-                <img src="<?= $_SESSION['user']['avatar'] ?>" width="200" height="200" alt="">
-                <div class=" form-file mt-2 mb-3">
-                    <input type="file" class="form-file-input" name="avatar">
-                    <label class="form-file-label">
-                        <span class="form-file-text">Изменить изображение</span>
-                        <span class="form-file-button">Поиск</span>
-                    </label>
-                </div>
-                <input type="hidden" name="idd" class="form-control" value="<?= $_SESSION['user']['id'] ?>">
-                <h5 class="mb-2">Email пользователя</h5>
-                <input type="email" class="form-control mb-3" name="email" placeholder="Введите адрес своей почты"
-                       value="<?= $_SESSION['user']['email'] ?>">
-                <button class="btn btn-dark btn-block mb-5" type="submit">Изменить данные</button>
-            </form>
-
             <?php
-            if ($_SESSION['user']['id'] == 17) {
-                echo '<a class="nav-link mb-5 w-100 font-weight-light font-italic text-center" href="/userslist.php"><strong>Посмотреть список пользователей</strong></a>';
+            $res = mysqli_query($connect, "SELECT * FROM `users`");
+            while ($row = $res->fetch_assoc()) {
+                echo '
+
+<!— Картинка профиля —>
+<div class="row">
+<div class="col-4">
+<img src=' . $row['avatar'] . ' width="200" height="200" alt="">
+</div>
+<div class="col-auto">
+<!— Данные профиля —>
+<h3 class="card-text">' . $row['login'] . '</h3>
+<h3 class="card-text">' . $row['full_name'] . '</h3>
+<h3 class="card-text">' . $row['email'] . '</h3>
+</div>
+</div>
+<div class="mb-5"></div>
+';
             }
-
             ?>
-
         </div>
         <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
     </div>
-
-
-</body>
-</html>
+</div>
