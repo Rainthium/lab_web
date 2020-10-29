@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!$_SESSION['user']) {
+if (!$_SESSION['user'] || $_SESSION['user']['id']!=17) {
     header('Location: /');
 }
 require_once 'vendor/connect.php';
