@@ -1,22 +1,26 @@
 <?php
 session_start();
-if (!$_SESSION['user'] || $_SESSION['user']['id'] != 17) {
+if (!$_SESSION['user']) {
     header('Location: /');
 }
 require_once 'vendor/connect.php';
 ?>
-
 <!doctype html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Профиль</title>
-    <!--    <link rel="stylesheet" href="assets/css/main.css">-->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
           integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
 
+
+    <title>Статьи</title>
 </head>
+
 <body style="background-image: url('images/white-cubes.png');">
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -24,7 +28,7 @@ require_once 'vendor/connect.php';
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
-<!-- Профиль -->
+<!--    Тут шапка сайта-->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="padding-left: 16px; padding-right: 16px">
     <a class="navbar-brand" href="articles.php">
         <img src="images/ikonka-gazeta.png" width="38" height="38" class="d-inline-block align-top" alt=""
@@ -70,34 +74,56 @@ require_once 'vendor/connect.php';
     </div>
 </nav>
 
-<div class="container">
-    <div class="mt-5"></div>
-    <div class="row">
-        <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
-        <div class="col-lg-6 col-md-10 col-sm-12">
+<!--      Основная часть сайта-->
+<div class="row flex-nowrap mr-0">
+
+    <!--    Правая колонка сайта-->
+    <div class="col">
+        <h3 class="mt-3 ml-3 mb-3"><strong>Статьи пользователя</strong></h3>
+
+        <!--              КАРТОЧКИ-->
+        <div class="d-flex flex-wrap">
+
             <?php
-            $res = mysqli_query($connect, "SELECT * FROM `users`");
+            $res = mysqli_query($connect, "SELECT * FROM `articles` WHERE author_id=" . (int)$_GET['author_id']);
             while ($row = $res->fetch_assoc()) {
                 echo '
-
-<!— Картинка профиля —>
-<div class="row">
-<div class="col-4">
-<img src=' . $row['avatar'] . ' width="200" height="200" alt="">
-</div>
-<div class="col-auto">
-<!— Данные профиля —>
-<h3 class="card-text">' . $row['login'] . '</h3>
-<h3 class="card-text">' . $row['full_name'] . '</h3>
-<h3 class="card-text">' . $row['email'] . '</h3>
-<a class="btn btn-dark btn-block mb-5" href="/authorArticles.php?author_id=' . $row['id'] . '">Посмотреть список статей</a>
-</div>
-</div>
-<div class="mb-5"></div>
-';
+                    <div class="card ml-3 mb-3" style="width: 18rem;">
+                        <img class="card-img-top" src="' . $row['image'] . '" style="width: 286px; height: 180px"
+                             alt="Card image cap">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">' . $row['title'] . '</h5>
+                            <p class="card-text flex-grow-1">' . $row['description'] . '</p>
+                            <a href="' . $row['link'] . '" class="btn btn-dark">Перейти к статье</a>
+                            ' . ($row['author_id'] == $_SESSION['user']['id'] ? '
+                            <form action="/editArticle.php" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="article_id" class="form-control" value="' . $row['id'] . '">
+                                <button class="btn btn-dark mt-1 w-100" type="submit">Редактировать статью</button>
+                            </form>
+                            ' : '') . '
+                        </div>
+                    </div>
+                    ';
             }
             ?>
+
         </div>
-        <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
+        <div class="d-flex justify-content-center">
+            <div class="btn-group text-center mb-3" role="group">
+                <button type="button" class="btn btn-dark">&lt;&lt;</button>
+                <button type="button" class="btn btn-dark">1</button>
+                <button type="button" class="btn btn-dark">2</button>
+                <button type="button" class="btn btn-dark">3</button>
+                <button type="button" class="btn btn-dark">4</button>
+                <button type="button" class="btn btn-dark">5</button>
+                <button type="button" class="btn btn-dark">6</button>
+                <button type="button" class="btn btn-dark">7</button>
+                <button type="button" class="btn btn-dark">>></button>
+            </div>
+        </div>
     </div>
 </div>
+
+</body>
+
+</html>

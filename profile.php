@@ -96,6 +96,32 @@ if (!$_SESSION['user']) {
                 <button class="btn btn-dark btn-block mb-5" type="submit">Изменить данные</button>
             </form>
 
+            <form action="vendor/addArticle.php" method="post" enctype="multipart/form-data">
+                <h3 class="mt-3 mb-4"><strong>Добавить статью</strong></h3>
+                <h5 class="form-label mb-2">Наименование статьи:</h5>
+                <input type="text" class="form-control mb-3" name="title" placeholder="Введите название статьи"
+                       value="" required>
+                <h5 class="form-label mb-2">Описание статьи:</h5>
+                <input type="text" class="form-control mb-3" name="description" placeholder="Введите описание статьи"
+                       value="" required>
+                <h5 class="form-label mb-2">Картинка статьи:</h5>
+                <div class=" form-file mt-2 mb-3">
+                    <input type="file" class="form-file-input" name="avatar">
+                    <label class="form-file-label">
+                        <span class="form-file-text">Выберите изображение</span>
+                        <span class="form-file-button">Поиск</span>
+                    </label>
+                </div>
+                <input type="hidden" name="idd" class="form-control" value="<?= $_SESSION['user']['id'] ?>">
+                <h5 class="mb-2">Адрес статьи:</h5>
+                <input type="text" class="form-control mb-3" name="link" placeholder="Введите адрес статьи" value=""
+                       required>
+                <button class="btn btn-dark btn-block mb-5" type="submit">Добавить статью</button>
+            </form>
+
+            <a class="btn btn-dark btn-block mb-5" href="/authorArticles.php?author_id=<?= $_SESSION['user']['id'] ?>">Посмотреть
+                свои статьи</a>
+
             <?php
             if ($_SESSION['user']['id'] == 17) {
                 echo '<a class="nav-link mb-5 w-100 font-weight-light font-italic text-center" href="/userslist.php"><strong>Посмотреть список пользователей</strong></a>';

@@ -1,9 +1,12 @@
 <?php
 session_start();
-if (!$_SESSION['user'] || $_SESSION['user']['id'] != 17) {
+if (!$_SESSION['user']) {
     header('Location: /');
 }
 require_once 'vendor/connect.php';
+
+$check_user = mysqli_query($connect, "SELECT * FROM `articles` WHERE `id` = '" . $_POST['article_id'] . "'");
+$article = mysqli_fetch_assoc($check_user);
 ?>
 
 <!doctype html>
@@ -61,7 +64,8 @@ require_once 'vendor/connect.php';
 
         <div class="m-2"></div>
         <div class="btn-group">
-            <a href="profile.php" class="btn btn-light active" role="button" aria-pressed="true">Профиль</a>
+            <a href="/vendor/logout.php" class="logout btn btn-light active" role="button"
+               aria-pressed="true">Выход</a>
             <div class="bth-group-append">
                 <img src="<?= $_SESSION['user']['avatar'] ?>" width="38" height="38" class="d-inline-block" alt=""
                      loading="lazy">
@@ -71,33 +75,41 @@ require_once 'vendor/connect.php';
 </nav>
 
 <div class="container">
-    <div class="mt-5"></div>
     <div class="row">
         <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
         <div class="col-lg-6 col-md-10 col-sm-12">
-            <?php
-            $res = mysqli_query($connect, "SELECT * FROM `users`");
-            while ($row = $res->fetch_assoc()) {
-                echo '
 
-<!— Картинка профиля —>
-<div class="row">
-<div class="col-4">
-<img src=' . $row['avatar'] . ' width="200" height="200" alt="">
-</div>
-<div class="col-auto">
-<!— Данные профиля —>
-<h3 class="card-text">' . $row['login'] . '</h3>
-<h3 class="card-text">' . $row['full_name'] . '</h3>
-<h3 class="card-text">' . $row['email'] . '</h3>
-<a class="btn btn-dark btn-block mb-5" href="/authorArticles.php?author_id=' . $row['id'] . '">Посмотреть список статей</a>
-</div>
-</div>
-<div class="mb-5"></div>
-';
-            }
-            ?>
+            <form action="vendor/editArticle.php" method="post" enctype="multipart/form-data">
+                <h3 class="mt-3 mb-4"><strong>Изменить статью</strong></h3>
+                <h5 class="form-label mb-2">Наименование статьи:</h5>
+                <input type="text" class="form-control mb-3" name="title" placeholder="Введите название статьи"
+                       value="<?= $article['title'] ?>" required>
+                <h5 class="form-label mb-2">Описание статьи:</h5>
+                <input type="text" class="form-control mb-3" name="description" placeholder="Введите описание статьи"
+                       value="<?= $article['description'] ?>" required>
+                <h5 class="form-label mb-2">Картинка статьи:</h5>
+                <img src="<?= $article['image'] ?>" width="200" height="200" alt="">
+                <div class=" form-file mt-2 mb-3">
+                    <input type="file" class="form-file-input" name="avatar">
+                    <label class="form-file-label">
+                        <span class="form-file-text">Выберите изображение</span>
+                        <span class="form-file-button">Поиск</span>
+                    </label>
+                </div>
+                <input type="hidden" name="idd" class="form-control" value="<?= $_POST['article_id'] ?>">
+                <h5 class="mb-2">Адрес статьи:</h5>
+                <input type="text" class="form-control mb-3" name="link" placeholder="Введите адрес статьи"
+                       value="<?= $article['link'] ?>" required>
+                <button class="btn btn-dark btn-block mb-5" type="submit">Изменить статью</button>
+            </form>
+
+            <a class="btn btn-dark btn-block mb-5" href="/authorArticles.php?author_id=<?= $_SESSION['user']['id'] ?>">Посмотреть
+                свои статьи</a>
+
         </div>
         <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
     </div>
-</div>
+
+
+</body>
+</html>
