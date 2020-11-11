@@ -90,7 +90,7 @@ require_once 'vendor/connect.php';
 <h3 class="card-text">' . $row['login'] . '</h3>
 <h3 class="card-text">' . $row['full_name'] . '</h3>
 <h3 class="card-text">' . $row['email'] . '</h3>
-<a class="btn btn-dark btn-block mb-5" href="/authorArticles.php?author_id=' . $row['id'] . '">Посмотреть список статей</a>
+<a class="btn btn-dark btn-block mb-5" style="width: 400px" href="/authorArticles.php?author_id=' . $row['id'] . '">Посмотреть список статей</a>
 </div>
 </div>
 <div class="mb-5"></div>
