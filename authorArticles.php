@@ -100,6 +100,10 @@ require_once 'vendor/connect.php';
                                 <input type="hidden" name="article_id" class="form-control" value="' . $row['id'] . '">
                                 <button class="btn btn-dark mt-1 w-100" type="submit">Редактировать статью</button>
                             </form>
+                            <form action="/vendor/deleteArticle.php" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="article_id" class="form-control" value="' . $row['id'] . '">
+                                <button class="btn btn-dark mt-1 w-100" type="submit">Удалить статью</button>
+                            </form>
                             ' : '') . '
                         </div>
                     </div>
