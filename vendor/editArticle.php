@@ -2,7 +2,7 @@
 session_start();
 require_once 'connect.php';
 
-$article_id = mysqli_real_escape_string($connect, $_POST['idd']);
+$article_id = mysqli_real_escape_string($connect, $_POST['article_id']);
 $title = mysqli_real_escape_string($connect, $_POST['title']);
 $description = mysqli_real_escape_string($connect, $_POST['description']);
 $link = mysqli_real_escape_string($connect, $_POST['link']);

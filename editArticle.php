@@ -96,7 +96,7 @@ $article = mysqli_fetch_assoc($check_user);
                         <span class="form-file-button">Поиск</span>
                     </label>
                 </div>
-                <input type="hidden" name="idd" class="form-control" value="<?= $_POST['article_id'] ?>">
+                <input type="hidden" name="article_id" class="form-control" value="<?= $_POST['article_id'] ?>">
                 <h5 class="mb-2">Адрес статьи:</h5>
                 <input type="text" class="form-control mb-3" name="link" placeholder="Введите адрес статьи"
                        value="<?= $article['link'] ?>" required>
