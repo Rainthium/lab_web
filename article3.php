@@ -93,13 +93,13 @@ $articleContent = '
                 <a class="nav-link active" href="#">Журналы</a>
             </li>
         </ul>
-        <form class="form-inline mr-auto">
+        <form action="/search.php" method="get" class="form-inline mr-auto">
             <div class="input-group flex-nowrap">
-                <input class="form-control" type="search" placeholder="Статья, автор, тема, журнал..."
-                       style="min-width: 270px">
-<!--                <div class="input-group-append">-->
-                    <button class="btn btn-outline-success active" type="submit">Поиск</button>
-<!--                </div>-->
+                <input name="search" class="form-control" type="search" placeholder="Статья, автор, тема, журнал..."
+                       style="min-width: 270px" value="<?php if(array_key_exists('search', $_GET)) echo mysqli_real_escape_string($connect, $_GET['search']); ?>">
+                <!--                <div class="input-group-append">-->
+                <button class="btn btn-outline-success active" type="submit">Поиск</button>
+                <!--                </div>-->
             </div>
         </form>
 

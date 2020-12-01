@@ -79,35 +79,62 @@ require_once 'vendor/connect.php';
 
     <!--    Правая колонка сайта-->
     <div class="col">
-        <h3 class="mt-3 ml-3 mb-3"><strong>Статьи пользователя</strong></h3>
+        <h3 class="mt-3 ml-3 mb-3"><strong>Результаты поиска: <?php echo mysqli_real_escape_string($connect, $_GET['search']); ?></strong></h3>
 
         <!--              КАРТОЧКИ-->
         <div class="d-flex flex-wrap">
 
             <?php
-            $res = mysqli_query($connect, "SELECT * FROM `articles` WHERE author_id=" . (int)$_GET['author_id']);
-            while ($row = $res->fetch_assoc()) {
-                echo '
-                    <div class="card ml-3 mb-3" style="width: 18rem;">
-                        <img class="card-img-top" src="' . $row['image'] . '" style="width: 286px; height: 180px"
-                             alt="Card image cap">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">' . $row['title'] . '</h5>
-                            <p class="card-text flex-grow-1">' . $row['description'] . '</p>
-                            <a href="' . $row['link'] . '" class="btn btn-dark">Перейти к статье</a>
-                            ' . ($row['author_id'] == $_SESSION['user']['id'] ? '
-                            <form action="/editArticle.php" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="article_id" class="form-control" value="' . $row['id'] . '">
-                                <button class="btn btn-dark mt-1 w-100" type="submit">Редактировать статью</button>
-                            </form>
-                            <form action="/vendor/deleteArticle.php" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="article_id" class="form-control" value="' . $row['id'] . '">
-                                <button class="btn btn-dark mt-1 w-100" type="submit">Удалить статью</button>
-                            </form>
-                            ' : '') . '
+            $keywords = mysqli_real_escape_string($connect, $_GET['search']);
+            $keywords = explode(' ', $keywords);
+            $keywords = array_map('trim', $keywords);
+            $keywords = array_filter($keywords);
+            $keywords = implode('|', $keywords);
+
+            $articles = mysqli_query($connect, "SELECT * FROM articles WHERE CONCAT(title,description) REGEXP '" . $keywords . "'");
+            if ($articles !== false){
+                while ($row = $articles->fetch_assoc()) {
+                    echo '
+                        <div class="card ml-3 mb-3" style="width: 18rem;">
+                            <img class="card-img-top" src="' . $row['image'] . '" style="width: 286px; height: 180px"
+                                 alt="Card image cap">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">' . $row['title'] . '</h5>
+                                <p class="card-text flex-grow-1">' . $row['description'] . '</p>
+                                <a href="' . $row['link'] . '" class="btn btn-dark">Перейти к статье</a>
+                                ' . ($row['author_id'] == $_SESSION['user']['id'] ? '
+                                <form action="/editArticle.php" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="article_id" class="form-control" value="' . $row['id'] . '">
+                                    <button class="btn btn-dark mt-1 w-100" type="submit">Редактировать статью</button>
+                                </form>
+                                <form action="/vendor/deleteArticle.php" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="article_id" class="form-control" value="' . $row['id'] . '">
+                                    <button class="btn btn-dark mt-1 w-100" type="submit">Удалить статью</button>
+                                </form>
+                                ' : '') . '
+                            </div>
                         </div>
-                    </div>
+                        ';
+                }
+                mysqli_free_result($articles);
+            }
+
+            $users = mysqli_query($connect, "SELECT * FROM users WHERE CONCAT(login,full_name) REGEXP '" . $keywords . "'");
+            if ($users !== false) {
+                while ($row = $users->fetch_assoc()) {
+                    echo '
+                        <div class="card ml-3 mb-3" style="width: 18rem;">
+                            <img class="card-img-top" src="' . $row['avatar'] . '" style="width: 286px; height: 180px"
+                                 alt="Card image cap">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">' . $row['full_name'] . '</h5>
+                                <p class="card-text flex-grow-1">' . $row['login'] . ' ' . $row['email'] . '</p>
+                                <a href="/authorArticles.php?author_id=' . $row['id'] . '" class="btn btn-dark">Посмотреть список статей</a>
+                            </div>
+                        </div>
                     ';
+                }
+                mysqli_free_result($users);
             }
             ?>
 

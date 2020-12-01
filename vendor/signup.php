@@ -54,7 +54,7 @@
 
     $password = md5($password);
 
-    $result = mysqli_query($connect, "SELECT * FROM `users` WHERE login = ".$login);
+    $result = mysqli_query($connect, "SELECT login FROM `users` WHERE login = ".$login);
     if (mysqli_num_rows($result) > 0)
     {
         $_SESSION['message'] = 'Пользователь с таким логином уже существует';
