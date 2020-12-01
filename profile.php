@@ -126,9 +126,11 @@ if (!$_SESSION['user']) {
             if ($_SESSION['user']['id'] == 17) {
                 echo '<a class="nav-link mb-5 w-100 font-weight-light font-italic text-center" href="/userslist.php"><strong>Посмотреть список пользователей</strong></a>';
             }
-
             ?>
 
+            <h5 class="mb-2">Офис сайта:</h5>
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A482b3cf23605be51fddcee5f2d14e7f233219d047acead7b2f076e6b47a2fb9f&amp;source=constructor" width="635" height="400" frameborder="0"></iframe>
+            <div class="mb-5"></div>
         </div>
         <div class="col-lg-3 col-md-1 d-none d-sm-block"></div>
     </div>
