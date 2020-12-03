@@ -55,7 +55,7 @@ if (array_key_exists('user', $_SESSION)) {
                 <div class="mb-3">
                     <h5 class="form-label">Логин</h5>
                     <input type="text" class="form-control" name="login" required placeholder="Введите свой логин">
-                    Логин должен содержать заглавные и строчные буквы, цифры.<br>
+                    Пароль должен содержать заглавные и строчные буквы, цифры.<br>
                     Длина пароля должна составлять не менее 6 символов.
                 </div>
                 <div class="mb-3">
