@@ -55,8 +55,6 @@ if (array_key_exists('user', $_SESSION)) {
                 <div class="mb-3">
                     <h5 class="form-label">Логин</h5>
                     <input type="text" class="form-control" name="login" required placeholder="Введите свой логин">
-                    Пароль должен содержать заглавные и строчные буквы, цифры.<br>
-                    Длина пароля должна составлять не менее 6 символов.
                 </div>
                 <div class="mb-3">
                     <h5 class="form-label">Почта</h5>
@@ -73,6 +71,8 @@ if (array_key_exists('user', $_SESSION)) {
                 <div class="mb-3">
                     <h5 class="form-label">Пароль</h5>
                     <input type="password" class="form-control" name="password" required placeholder="Введите пароль">
+                    Пароль должен содержать заглавные и строчные буквы, цифры.<br>
+                    Длина пароля должна составлять не менее 6 символов.
                 </div>
                 <div class="mb-3">
                     <h5 class="form-label">Подтверждение пароля</h5>
